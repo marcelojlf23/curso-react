@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import AddTask from "./components/AddTask";
 import Tasks from "./components/Tasks";
+import { v4 as uuifb4 } from "uuid";
 
 const App = () => {
   const [tasks, setTesks] = useState([
@@ -17,10 +18,22 @@ const App = () => {
     }
   ])
   
+  const handleTaskAddition = (taskTitle) => {
+    const newTasks = [... tasks,
+      {
+        title: taskTitle,
+        id: uuifb4(),
+        completed: false
+      }
+    ];
+
+    setTesks(newTasks);
+  }
+
   return (
     <>
       <div className="container">
-        <AddTask />
+        <AddTask handleTaskAddition={handleTaskAddition}/>
         <Tasks tasks={tasks}/>
       </div>
     </>
