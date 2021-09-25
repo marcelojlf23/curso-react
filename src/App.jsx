@@ -5,7 +5,7 @@ import Tasks from "./components/Tasks";
 import { v4 as uuifb4 } from "uuid";
 
 const App = () => {
-  const [tasks, setTesks] = useState([
+  const [tasks, setTasks] = useState([
     {
       id: '1',
       title: 'Estudar programação',
@@ -17,6 +17,16 @@ const App = () => {
       completed: true,
     }
   ])
+
+  const handleTaskClick = (taskId) => {
+    const newTasks = tasks.map((task) => {
+      if (task.id === taskId) return { ... task, completed: !task.completed}
+
+      return task;
+    });
+
+    setTasks(newTasks);
+  }
   
   const handleTaskAddition = (taskTitle) => {
     const newTasks = [... tasks,
@@ -27,14 +37,14 @@ const App = () => {
       }
     ];
 
-    setTesks(newTasks);
+    setTasks(newTasks);
   }
 
   return (
     <>
       <div className="container">
         <AddTask handleTaskAddition={handleTaskAddition}/>
-        <Tasks tasks={tasks}/>
+        <Tasks tasks={tasks} handleTaskClick={handleTaskClick}/>
       </div>
     </>
   );
