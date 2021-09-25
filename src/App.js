@@ -3,7 +3,6 @@ import "./App.css";
 import Tasks from "./components/Tasks";
 
 const App = () => {
-  // const message = "Hellow World!";
   const [tasks, setTesks] = useState([
     {
       id: '1',
@@ -20,7 +19,7 @@ const App = () => {
   return (
     <>
       <div className="container">
-        <Tasks />
+        <Tasks tasks={tasks}/>
       </div>
     </>
   );
