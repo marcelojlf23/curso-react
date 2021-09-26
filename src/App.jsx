@@ -28,11 +28,11 @@ const App = () => {
   // with empty list array (fetchTasks{,[]}), it's triggered when component are assembled
   useEffect(() => {
     const fetchTasks = async () => {
-      const response = await axios.get(
+      const {data} = await axios.get(
         "https://jsonplaceholder.cypress.io/todos?_limit=10"
       );
 
-      console.log(response);
+      setTasks(data);
     }
 
     fetchTasks();
