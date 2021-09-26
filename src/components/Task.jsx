@@ -11,11 +11,11 @@ const Task = ({task, handleTaskClick, handleTaskDeletion}) => {
     }
 
     return ( 
-        <div 
+        <div onClick={() => handleTaskClick(task.id)}
             className="task-container"
             style={task.completed ? {borderLeft: "6px solid chartreuse" } : {}}
         >
-            <div className="task-title" onClick={() => handleTaskClick(task.id)}>
+            <div className="task-title" >
                 {task.title}
             </div>
 
