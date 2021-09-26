@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import AddTask from "./components/AddTask";
 import Tasks from "./components/Tasks";
 import Header from "./components/Header";
+import TaskDetails from "./components/TaskDetails";
 
 const App = () => {
   const [tasks, setTasks] = useState([
@@ -58,6 +59,7 @@ const App = () => {
             <Tasks tasks={tasks} handleTaskDeletion={handleTaskDeletion} handleTaskClick={handleTaskClick}/>
           </>
         )} />
+        <Route path="/:taskTitle" exact component={TaskDetails}/>
       </div>
     </Router>
   );
